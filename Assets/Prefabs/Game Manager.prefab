@@ -112,7 +112,7 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   level: Level
-  speed: 5
+  speed: 10
   jumpForce: 5
   groundedDistance: 1.5
 --- !u!114 &2376842459006364307

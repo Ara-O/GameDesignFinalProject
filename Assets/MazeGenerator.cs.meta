@@ -3,7 +3,8 @@ guid: 38112bd3b866b894a8fe5d65158de8a0
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _mazeCellPrefab: {fileID: 2635494234630768931, guid: bba0d101b07f61d4aa0338036c43c5d4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -151,22 +151,7 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    void ShootBeam()
-    {
-        Debug.Log("Shooting");
-        //Vector3 middleOfScreen = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
 
-
-        // Convert screen position to world position
-        // Vector3 middleWorldPoint = cameraPosition.ScreenToWorldPoint(middleOfScreen);
-
-        // Instantiate orb prefab
-        GameObject orb = Instantiate(orbPrefab, GameManager.localPlayer.cameraPosition.position, Quaternion.identity);
-
-        // Add Rigidbody component to orb and apply force to shoot it
-        Rigidbody orbRb = orb.GetComponent<Rigidbody>();
-        orbRb.velocity = GameManager.localPlayer.cameraPosition.forward * shootSpeed;
-    }
 
     private void Update()
     {
@@ -175,15 +160,6 @@ public class PlayerController : NetworkBehaviour
         {
             Movement();
 
-            // fireTimer += Time.deltaTime;
-            if (Mouse.current.leftButton.wasPressedThisFrame)
-            {
-                // Debug.Log("test");
-                // Debug.Log(PlayerName);
-                // fireTimer = 0;
-                // laserLine.SetPosition(0, laserOrigin.position);
-                ShootBeam();
-            }
             return;
         }
 
