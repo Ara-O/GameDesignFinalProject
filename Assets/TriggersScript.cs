@@ -10,14 +10,25 @@ public class TriggersScript : MonoBehaviour
 
     private CharacterController _characterController;
     private Label _displayMessageLabel;
+    private Label _instructionMessageLabel;
     private string _previousText;
     private void Start()
     {
+        Debug.Log("trig start");
         // Get the root.
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        UIDocument instructionUI = FindObjectOfType<UIDocument>();
+        VisualElement iroot = instructionUI.rootVisualElement;
+
+        if (instructionUI == null) Debug.Log("No instruction UI");
         _characterController = GetComponent<CharacterController>();
         _displayMessageLabel = root.Q<Label>("Dialogue");
+
+        _instructionMessageLabel = iroot.Q<Label>("Dialogue");
         _displayMessageLabel.text = "";
+
+        Debug.Log(_instructionMessageLabel.text);
+        _instructionMessageLabel.text = "naka";
     }
 
 
@@ -35,9 +46,17 @@ public class TriggersScript : MonoBehaviour
         if (other.name.Contains("Portal"))
         {
             _characterController.enabled = false; // Disable the character controller temporarily
-            _characterController.transform.position = new Vector3(-82, 10, 0); // Set the position
+            _characterController.transform.position = new Vector3(450, 1, 27); // Set the position
             _characterController.enabled = true;
+            // _displayMessageLabel.text = "Justice...Two stories...Condemnation is in your hands";
         }
+
+        if (other.name.Contains("Story 1 A"))
+        {
+            _displayMessageLabel.text = "A painting of a weary man, cradling his ailing child in his arms, a look of concern etched on his face.";
+
+        }
+
     }
 
     private IEnumerator HideTextAfterDelay(float delay)
