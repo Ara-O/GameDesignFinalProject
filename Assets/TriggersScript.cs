@@ -16,6 +16,7 @@ public class TriggersScript : MonoBehaviour
     private Label _manLabel;
     private Label _judgeLabel;
     private string _previousText;
+    private bool L2Started;
 
     private Trials trialsdata;
     private void Start()
@@ -73,6 +74,11 @@ public class TriggersScript : MonoBehaviour
             _displayMessageLabel.text = "We have to get to the end";
             _instructionMessageLabel.text = "Free yourselves of temptation and greed...Steady your resolve";
             StartCoroutine(HideTextAfterDelay(5f));
+        }
+
+        if (other.name.Equals("L2StartTrigger"))
+        {
+            L2Started = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -170,6 +176,12 @@ public class TriggersScript : MonoBehaviour
         {
             Debug.Log("Viewing story 2");
             _instructionMessageLabel.text = "And in the face of rising unrest, they cling to their power with desperate hands, blinded by their own hubris to the inevitable reckoning that awaits.";
+        }
+
+        if (other.name.Contains("L3Trigger"))
+        {
+            Debug.Log("Viewing story 2");
+            _instructionMessageLabel.text = "Look within yourself. There your treasure lies";
 
         }
     }
@@ -177,41 +189,42 @@ public class TriggersScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
+        if (L2Started)
         {
-            trialsdata.convictMan();
-            _manLabel.text = "Convicted: Thieves";
-        }
 
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            trialsdata.convictJudge();
-            _judgeLabel.text = "Convicted: Officials";
-
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            trialsdata.reduceTrialsScore();
-            _trialsLabel.text = "Trials " + trialsdata.trials;
-
-            if (trialsdata.judge_convicted && trialsdata.man_convicted)
+            if (Input.GetKeyDown(KeyCode.M))
             {
-                _instructionMessageLabel.text = "In their triumph, the players come to grasp the unyielding principle: justice knows no bias.";
-                GameObject door = GameObject.Find("L2/NextLevelDoor");
-                door.SetActive(false);
+                trialsdata.convictMan();
+                _manLabel.text = "Convicted: Thieves";
             }
-            else
-            {
-                _instructionMessageLabel.text = "You have chosen wrong...Try again";
-                trialsdata.judge_convicted = false;
-                trialsdata.man_convicted = false;
-                _manLabel.text = "";
-                _judgeLabel.text = "";
 
-                if (trialsdata.trials == 0)
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                trialsdata.convictJudge();
+                _judgeLabel.text = "Convicted: Officials";
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                trialsdata.reduceTrialsScore();
+                _trialsLabel.text = "Trials " + (trialsdata.trials - 1);
+
+                if (trialsdata.judge_convicted && trialsdata.man_convicted)
                 {
-                    Time.timeScale = 0f;
+                    _instructionMessageLabel.text = "In their triumph, the players come to grasp the unyielding principle: justice knows no bias.";
+                    GameObject door = GameObject.Find("L2/NextLevelDoor");
+                    door.SetActive(false);
+                }
+                else
+                {
+                    _instructionMessageLabel.text = "You have chosen wrong...Try again";
+                    trialsdata.judge_convicted = false;
+                    trialsdata.man_convicted = false;
+                    _manLabel.text = "";
+                    _judgeLabel.text = "";
+
+
                 }
             }
         }

@@ -7,15 +7,22 @@ public class PickUpObject : NetworkBehaviour
     public GameObject cubeObject;
 
     // Bool to track if the object is currently picked up
-    [SyncVar]
-    private bool isPickedUp = false;
+    [SyncVar(hook = nameof(OnIsPickedUpChanged))]
+    public bool isPickedUp = false;
+
+    private void OnIsPickedUpChanged(bool oldIsPickedUp, bool newIsPickedUp)
+    {
+        // Set the visibility of the cube object based on the new value of isPickedUp
+        cubeObject.SetActive(!newIsPickedUp);
+    }
 
     // Function to handle object pickup
-    [Command]
+    [Command(requiresAuthority = false)]
     public void CmdPickUpObject()
     {
 
         isPickedUp = true;
+        cubeObject.SetActive(false);
         Debug.Log("obj is pickedup");
     }
 }

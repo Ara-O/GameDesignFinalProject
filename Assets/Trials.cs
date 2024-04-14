@@ -20,7 +20,7 @@ public class Trials : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void reduceTrialsScore()
     {
-        trials = trials - 1;
+        if (trials > 0) trials = trials - 1;
     }
 
     [Command(requiresAuthority = false)]

@@ -12,20 +12,21 @@ public class PlayerInteraction : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (pickUpObject != null)
-            {
-                CmdInteractWithObject();
-            }
-            else
-            {
-                Debug.Log("is null");
-            }
+            // if (pickUpObject != null)
+            // {
+            CmdInteractWithObject();
+            // }
+            // else
+            // {
+            //     Debug.Log("is null");
+            // }
         }
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     void CmdInteractWithObject()
     {
-        pickUpObject.CmdPickUpObject();
+        PickUpObject stuf = FindObjectOfType<PickUpObject>();
+        stuf.CmdPickUpObject();
     }
 }
