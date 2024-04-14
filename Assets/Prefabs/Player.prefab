@@ -940,6 +940,7 @@ GameObject:
   - component: {fileID: 633999554095045583}
   - component: {fileID: 6226907454149103264}
   - component: {fileID: 8667422720652652781}
+  - component: {fileID: 8228237026297637991}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1087,7 +1088,7 @@ MonoBehaviour:
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
   onlySyncOnChangeCorrectionMultiplier: 2
   rotationSensitivity: 0.01
-  positionPrecision: 0.01
+  positionPrecision: 0.476
   scalePrecision: 0.01
 --- !u!114 &6226907454149103264
 MonoBehaviour:
@@ -1117,3 +1118,19 @@ MonoBehaviour:
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: f2007beb437fcb94b80059610c954d58, type: 3}
   m_SortingOrder: 3
+--- !u!114 &8228237026297637991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8718707839533561219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9df52c1cd4de4e24892554e52e9fbcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  pickUpObject: {fileID: 600343729818471353, guid: 9b8d3668cd6d1f4408ef234a57745d88, type: 3}

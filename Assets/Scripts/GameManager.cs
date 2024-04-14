@@ -358,6 +358,7 @@ public class GameManager : NetworkManager
         SaveResolution();
     }
 
+
     public override void LateUpdate()
     {
         base.LateUpdate();

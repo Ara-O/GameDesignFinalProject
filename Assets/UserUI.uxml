@@ -1,9 +1,0 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement style="flex-grow: 1; -unity-text-align: middle-center; align-self: center; justify-content: space-between; padding-top: 100px; padding-bottom: 20px;">
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Dialogue" style="color: rgb(255, 255, 255); margin-top: 0; -unity-text-align: middle-center; width: 248px;" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Instruction" style="color: rgb(255, 255, 255); margin-top: 0; -unity-text-align: lower-center; width: 248px; white-space: normal;" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Trials" style="color: rgb(255, 255, 255); margin-top: 0; -unity-text-align: lower-center; width: 96px; white-space: normal; position: absolute; top: 17px; left: 193px; height: 20px;" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Man" style="color: rgb(255, 255, 255); margin-top: 0; -unity-text-align: lower-center; width: 96px; white-space: normal; position: absolute; top: 62px; left: 189px; height: 20px;" />
-        <ui:Label tabindex="-1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Judge" style="color: rgb(255, 255, 255); margin-top: 0; -unity-text-align: lower-center; width: 96px; white-space: normal; position: absolute; top: 112px; left: 188px; height: 20px;" />
-    </ui:VisualElement>
-</ui:UXML>
