@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerInteraction : NetworkBehaviour
 {
     public PickUpObject pickUpObject;
+    public GameObject viewObject;
 
     void Update()
     {
@@ -28,5 +29,8 @@ public class PlayerInteraction : NetworkBehaviour
     {
         PickUpObject stuf = FindObjectOfType<PickUpObject>();
         stuf.CmdPickUpObject();
+
+        if (viewObject == null) Debug.Log("Viewed object is null");
+        viewObject.SetActive(true);
     }
 }
