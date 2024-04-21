@@ -1135,6 +1135,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   pickUpObject: {fileID: 600343729818471353, guid: 9b8d3668cd6d1f4408ef234a57745d88, type: 3}
+  isViewObjectActive: 0
   viewObject: {fileID: 1467576854407492189}
 --- !u!1001 &1467576854407460093
 PrefabInstance:
@@ -1166,15 +1167,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abfc2d3b5ea5d64ca95d10d1a34b677, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.2519
+      value: 0.541
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abfc2d3b5ea5d64ca95d10d1a34b677, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.343
+      value: 0.627
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abfc2d3b5ea5d64ca95d10d1a34b677, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.804
+      value: 0.121
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5abfc2d3b5ea5d64ca95d10d1a34b677, type: 3}
       propertyPath: m_LocalRotation.w

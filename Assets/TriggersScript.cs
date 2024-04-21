@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class TriggersScript : MonoBehaviour
+public class TriggersScript : NetworkBehaviour
 {
 
     private CharacterController _characterController;
@@ -17,10 +18,31 @@ public class TriggersScript : MonoBehaviour
     private Label _judgeLabel;
     private string _previousText;
     private bool L2Started;
+    GameObject doorObject = null;
+
+    [SyncVar(hook = nameof(OnDoorStateChanged))]
+    private bool isOpen = true;
 
     private Trials trialsdata;
+
+    [Command(requiresAuthority = false)]
+    public void CmdChangeDoorState(bool newState)
+    {
+        isOpen = newState;
+    }
+
+    private void OnDoorStateChanged(bool oldValue, bool newValue)
+    {
+        if (doorObject != null)
+        {
+            Debug.Log("remove le door");
+            doorObject.SetActive(newValue); // Enable or disable the door object based on the new state
+        }
+    }
+
     private void Start()
     {
+        doorObject = GameObject.Find("L2/NextLevelDoor");
         Debug.Log("Trigger script initialized");
         // Get the root.
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
@@ -84,7 +106,7 @@ public class TriggersScript : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("Exiting trigger");
-        if (other.name.Equals("BookTrigger") || other.name.Equals("TvTrigger"))
+        if (other.name.Equals("BookTrigger"))
         {
             StartCoroutine(HideTextAfterDelay(1f));
         }
@@ -102,7 +124,7 @@ public class TriggersScript : MonoBehaviour
         if (other.name.Equals("MemoryTrigger"))
         {
             // _displayMessageLabel.text = "You hear a voice...'Your presence here whispers of a past cloaked in darkness, of deeds that echo through the halls of eternity, beckoning for redemption to soothe restless souls'";
-            _displayMessageLabel.text = "'Even in death's embrace, the echoes of your former lives as thieves whisper secrets of remorse and redemption, guiding you through trials of redemption to find eternal rest...'";
+            _displayMessageLabel.text = "Interesting...'Even in death's embrace, the echoes of your former lives as thieves whisper secrets of remorse and redemption, guiding you through trials of redemption to find eternal rest...'";
         }
 
         if (other.name.Equals("BookTrigger"))
@@ -213,8 +235,8 @@ public class TriggersScript : MonoBehaviour
                 if (trialsdata.judge_convicted && trialsdata.man_convicted)
                 {
                     _instructionMessageLabel.text = "In their triumph, the players come to grasp the unyielding principle: justice knows no bias.";
-                    GameObject door = GameObject.Find("L2/NextLevelDoor");
-                    door.SetActive(false);
+
+                    CmdChangeDoorState(false);
                 }
                 else
                 {
@@ -241,5 +263,12 @@ public class TriggersScript : MonoBehaviour
     {
         yield return new WaitForSeconds(3f); // Wait for the specified delay
         _displayMessageLabel.text = "Wait...where are we?"; // Set text to empty string to hide it
+        StartCoroutine(ShowNextText2());
+    }
+
+    private IEnumerator ShowNextText2()
+    {
+        yield return new WaitForSeconds(2f); // Wait for the specified delay
+        _displayMessageLabel.text = ""; // Set text to empty string to hide it
     }
 }

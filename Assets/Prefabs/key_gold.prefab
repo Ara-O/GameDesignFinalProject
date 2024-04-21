@@ -133,6 +133,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   cubeObject: {fileID: 3157009924095285053}
+  isPickedUp: 0
 --- !u!114 &7467202898705821081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 1756180704
+  _assetId: 1186422874
   serverOnly: 0
   visibility: 0
   hasSpawned: 0

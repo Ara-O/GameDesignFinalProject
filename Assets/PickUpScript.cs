@@ -23,6 +23,7 @@ public class PickUpObject : NetworkBehaviour
 
         isPickedUp = true;
         cubeObject.SetActive(false);
+
         Debug.Log("obj is pickedup");
     }
 }
