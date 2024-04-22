@@ -42,6 +42,7 @@ public class TriggersScript : NetworkBehaviour
 
     private void Start()
     {
+
         doorObject = GameObject.Find("L2/NextLevelDoor");
         Debug.Log("Trigger script initialized");
         // Get the root.
@@ -229,16 +230,26 @@ public class TriggersScript : NetworkBehaviour
 
             if (Input.GetKeyDown(KeyCode.C))
             {
-                trialsdata.reduceTrialsScore();
-                _trialsLabel.text = "Trials " + (trialsdata.trials - 1);
-
                 if (trialsdata.judge_convicted && trialsdata.man_convicted)
                 {
                     _instructionMessageLabel.text = "In their triumph, the players come to grasp the unyielding principle: justice knows no bias.";
 
                     CmdChangeDoorState(false);
+                    return;
                 }
-                else
+
+                trialsdata.reduceTrialsScore();
+
+                _trialsLabel.text = "Trials " + (trialsdata.trials - 1);
+
+                if (trialsdata.trials - 1 == 0)
+                {
+                    GameManager.LoadEndGameLevel("Level 3");
+                    return;
+                }
+
+
+                if (!trialsdata.judge_convicted || !trialsdata.man_convicted)
                 {
                     _instructionMessageLabel.text = "You have chosen wrong...Try again";
                     trialsdata.judge_convicted = false;

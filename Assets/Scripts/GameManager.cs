@@ -722,4 +722,12 @@ public class GameManager : NetworkManager
     {
         SetResolution(Screen.fullScreenMode == FullScreenMode.Windowed);
     }
+
+    public static void LoadEndGameLevel(string level)
+    {
+        Debug.Log("cHNGING scene");
+        singleton.ServerChangeScene(level);
+    }
 }
+
+

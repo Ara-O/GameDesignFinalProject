@@ -11,6 +11,7 @@ public class FinalScript : NetworkBehaviour
     [SyncVar(hook = nameof(OnGameEnded))]
     private bool isGameEnded = false;
 
+
     private VisualElement endScreen;
     private bool isGameEndScreenDisplayed = false;
 
@@ -53,5 +54,9 @@ public class FinalScript : NetworkBehaviour
     {
         EndGame();
         Debug.Log("You have finished the game");
+        GameManager.LoadEndGameLevel("Level 2");
+        // LoadEndGameLevel();
+        // NetworkManager.DestroyObject(other);
+
     }
 }

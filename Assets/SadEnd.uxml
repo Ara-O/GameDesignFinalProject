@@ -1,0 +1,5 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:Label tabindex="-1" text="YOU DID NOT OVERCOME THE TRIALS...WELCOME TO ETERNAL TORMENT.&#10;&#10;THIS IS YOUR END." parse-escape-sequences="true" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; -unity-font-definition: url(&apos;project://database/Assets/Fonts/venite-adoremus-font/VeniteAdoremus-rgRBA%20SDF.asset?fileID=11400000&amp;guid=25cdc16c0a110ac4e812d62cb5db983a&amp;type=2#VeniteAdoremus-rgRBA SDF&apos;); -unity-font: url(&apos;project://database/Assets/Fonts/venite-adoremus-font/VeniteAdoremusStraight-Yzo6v.ttf?fileID=12800000&amp;guid=eb81926e8390a47468b3697e7bc9b3ab&amp;type=3#VeniteAdoremusStraight-Yzo6v&apos;); color: rgb(255, 255, 255); text-overflow: ellipsis; white-space: normal;" />
+    </ui:VisualElement>
+</ui:UXML>
