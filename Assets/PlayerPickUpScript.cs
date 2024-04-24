@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerInteraction : NetworkBehaviour
 {
-    public PickUpObject pickUpObject;
+    private PickUpObject pickUpObject;
 
     [SyncVar(hook = nameof(OnViewObjectActiveChanged))]
     public bool isViewObjectActive;
@@ -12,6 +12,7 @@ public class PlayerInteraction : NetworkBehaviour
     private bool isPickedUp = false;
 
     public GameObject viewObject;
+    private bool canPickUpKey = false;
     GameObject doorObject = null;
 
     [SyncVar(hook = nameof(OnDoorStateChanged))]
@@ -46,10 +47,15 @@ public class PlayerInteraction : NetworkBehaviour
         if (!isLocalPlayer)
             return;
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && canPickUpKey)
         {
             CmdInteractWithObject();
+        }
 
+
+        if (Input.GetKeyDown(KeyCode.P) && isPickedUp)
+        {
+            CmdInteractWithObjectDrop();
         }
     }
 
@@ -59,7 +65,7 @@ public class PlayerInteraction : NetworkBehaviour
         {
             Debug.Log("store final door");
             doorObject = GameObject.Find("Final_door");
-
+            canPickUpKey = true;
             if (doorObject == null) Debug.Log("door no found");
         }
 
@@ -92,8 +98,24 @@ public class PlayerInteraction : NetworkBehaviour
     {
         isPickedUp = true;
 
-        PickUpObject stuf = FindObjectOfType<PickUpObject>();
-        stuf.CmdPickUpObject();
+        pickUpObject = FindObjectOfType<PickUpObject>();
+        pickUpObject.CmdPickUpObject();
+
+        if (viewObject == null)
+            Debug.Log("Viewed object is null");
+
+        // Toggle the state of the viewObject on the server
+        isViewObjectActive = !isViewObjectActive;
+    }
+
+    [Command(requiresAuthority = false)]
+    void CmdInteractWithObjectDrop()
+    {
+        isPickedUp = false;
+
+        pickUpObject.CmdDropObject();
+        // pickUpObject = FindObjectOfType<PickUpObject>();
+        // key.CmdPickUpObject();
 
         if (viewObject == null)
             Debug.Log("Viewed object is null");

@@ -26,4 +26,15 @@ public class PickUpObject : NetworkBehaviour
 
         Debug.Log("obj is pickedup");
     }
+
+    // Function to handle object pickup
+    [Command(requiresAuthority = false)]
+    public void CmdDropObject()
+    {
+
+        isPickedUp = false;
+        cubeObject.SetActive(true);
+
+        Debug.Log("obj is dropped");
+    }
 }

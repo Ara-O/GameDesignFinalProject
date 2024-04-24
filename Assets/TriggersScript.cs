@@ -107,7 +107,7 @@ public class TriggersScript : NetworkBehaviour
     private void OnTriggerExit(Collider other)
     {
         Debug.Log("Exiting trigger");
-        if (other.name.Equals("BookTrigger"))
+        if (other.name.Equals("BookTrigger") || other.name.Equals("KeyTrigger"))
         {
             StartCoroutine(HideTextAfterDelay(1f));
         }
@@ -116,7 +116,6 @@ public class TriggersScript : NetworkBehaviour
         {
             _displayMessageLabel.text = "Well, I'll be damned!";
             StartCoroutine(HideTextAfterDelay(3f));
-
         }
 
     }
@@ -126,6 +125,11 @@ public class TriggersScript : NetworkBehaviour
         {
             // _displayMessageLabel.text = "You hear a voice...'Your presence here whispers of a past cloaked in darkness, of deeds that echo through the halls of eternity, beckoning for redemption to soothe restless souls'";
             _displayMessageLabel.text = "Interesting...'Even in death's embrace, the echoes of your former lives as thieves whisper secrets of remorse and redemption, guiding you through trials of redemption to find eternal rest...'";
+        }
+
+        if (other.name.Equals("KeyTrigger"))
+        {
+            _displayMessageLabel.text = "Click E to pick up the key and P to drop the key";
         }
 
         if (other.name.Equals("BookTrigger"))
