@@ -53,8 +53,7 @@ public class FinalScript : NetworkBehaviour
     private void OnTriggerEnter(Collider other)
     {
         EndGame();
-        Debug.Log("You have finished the game");
-        GameManager.LoadEndGameLevel("Level 2");
+        GameManager.LoadEndGameLevel("FinalChallenge");
         // LoadEndGameLevel();
         // NetworkManager.DestroyObject(other);
 
