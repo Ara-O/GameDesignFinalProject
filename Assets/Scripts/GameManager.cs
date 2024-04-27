@@ -548,9 +548,11 @@ public class GameManager : NetworkManager
         // Ensure other UI are the opposite display of the options (one is shown, the other is not).
         foreach (VisualElement root in OtherUIDocuments.Select(otherUIDocument => otherUIDocument.rootVisualElement))
         {
-            root.visible = !_optionsOpen;
-            root.style.display = !_optionsOpen ? DisplayStyle.Flex : DisplayStyle.None;
-            root.SetEnabled(!_optionsOpen);
+            // Debug.Log(root);
+            // Debug.Log(_optionsOpen);
+            // root.visible = !_optionsOpen;
+            // root.style.display = !_optionsOpen ? DisplayStyle.Flex : DisplayStyle.None;
+            // root.SetEnabled(!_optionsOpen);
         }
 
         _optionsRoot.visible = _optionsOpen;

@@ -147,7 +147,7 @@ public class TriggersScript : NetworkBehaviour
 
         if (other.name.Contains("ConvictMan"))
         {
-            _instructionMessageLabel.text = "Press M to convict the man";
+            _instructionMessageLabel.text = "Press M to convict the thieves";
         }
 
         if (other.name.Equals("Convict"))
@@ -157,7 +157,7 @@ public class TriggersScript : NetworkBehaviour
 
         if (other.name.Contains("ConvictJudge"))
         {
-            _instructionMessageLabel.text = "Press J to convict the judge";
+            _instructionMessageLabel.text = "Press J to convict the corrupt officials";
         }
 
         if (other.name.Contains("Story 2 A"))
